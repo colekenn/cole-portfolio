@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import {
   ArrowDown,
   ArrowUpRight,
-  Download,
   Mail,
   Menu,
   X,
@@ -188,9 +187,6 @@ export default function App() {
               <div className="hero-actions intro-line intro-five">
                 <a className="button primary" href="#projects">
                   View projects <ArrowDown size={17} />
-                </a>
-                <a className="button secondary" href="/resume.pdf" target="_blank" rel="noreferrer">
-                  Résumé <Download size={16} />
                 </a>
               </div>
             </div>
