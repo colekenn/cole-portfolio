@@ -59,9 +59,9 @@ const experience = [
       'Built trading-strategy generation, simulation, authentication, and asynchronous backtesting systems across Python and AWS-backed services.',
   },
   {
-    role: 'Instructional Assistant',
+    role: 'Computer Science SI Instructor',
     company: 'University of South Carolina',
-    period: 'Aug. 2025 — Present',
+    period: 'Aug. 2025 — May 2026',
     logo: '/usc-experience-logo.jpg',
     summary:
       'Lead weekly peer instruction in advanced C++, data structures, algorithmic analysis, memory management, and debugging.',
