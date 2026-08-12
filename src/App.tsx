@@ -56,7 +56,7 @@ const experience = [
     period: 'Oct. 2025 — May 2026',
     logo: '/knead-logo.jpeg',
     summary:
-      'Built a Python code generation pipeline for trading strategies, an async backtesting framework cutting evaluation time ~40%, AWS Cognito/Supabase authentication, and a stateless multi-tenant backend with persistent, recoverable executor state.',
+      'Built a Python code generation pipeline for trading strategies, an async backtesting framework with parallel execution, AWS Cognito/Supabase authentication, and a stateless multi-tenant backend with persistent, recoverable executor state.',
   },
   {
     role: 'Computer Science SI Instructor',
