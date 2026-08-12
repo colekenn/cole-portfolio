@@ -148,13 +148,56 @@ body{background:var(--bg)}
 @media(max-width:620px){.project-visual{height:235px}.project-body{padding:22px;min-height:0}.queue-flow{grid-template-columns:1fr;gap:8px;padding:16px}.queue-flow i{display:none}.queue-terminal{display:none}}
 
 /* Clean stacked project cards */
-.project-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.project-grid{grid-template-columns:repeat(4,minmax(250px,1fr));gap:22px;align-items:stretch;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity}
 .project-card{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:48px auto 1fr;text-align:left;min-width:0;overflow:hidden}
+.project-card{scroll-snap-align:start}
 .project-top{grid-area:auto}
 .project-visual{width:100%;height:210px;min-height:0;border-right:0;border-bottom:1px solid var(--ink);overflow:hidden}
 .project-body{min-height:180px;padding:24px;align-items:flex-start;text-align:left}
 .project-body h3{font-size:clamp(28px,2.3vw,36px);line-height:1;white-space:normal;margin-bottom:22px}
 .project-body .tags{margin-top:0;margin-bottom:auto;justify-content:flex-start}
 .project-link{white-space:nowrap}
-@media(max-width:1120px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-body h3{font-size:32px}.project-visual{height:235px}}
-@media(max-width:760px){.project-grid{grid-template-columns:1fr}.project-card{grid-template-columns:1fr}.project-visual{height:300px}.project-body{min-height:0}.project-body h3{white-space:normal}}
+.pokemon-visual{position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#fff 0 2%,transparent 2.2%),linear-gradient(135deg,#f3eee4,#ded5c6);isolation:isolate}
+.pokemon-visual:before{content:'';position:absolute;inset:18px;border:1px solid #12151924;background-image:linear-gradient(#1215190b 1px,transparent 1px),linear-gradient(90deg,#1215190b 1px,transparent 1px);background-size:22px 22px;z-index:-1}
+.pokemon-visual>span{position:absolute;right:26px;bottom:22px;font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#625d55}
+.pokeball{width:118px;height:118px;border:7px solid #121519;border-radius:50%;position:relative;overflow:hidden;background:linear-gradient(to bottom,#b54b48 0 44%,#121519 44% 56%,#f9f7f1 56% 100%);box-shadow:9px 10px 0 #1215191c;transform:rotate(-8deg);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.project-card:hover .pokeball{transform:rotate(8deg) scale(1.04)}
+.pokeball-center{position:absolute;width:35px;height:35px;border:7px solid #121519;border-radius:50%;background:#f9f7f1;left:50%;top:50%;transform:translate(-50%,-50%)}
+.pokeball-center:after{content:'';position:absolute;inset:6px;border:2px solid #8a857c;border-radius:50%}
+.pokemon-spark{position:absolute;width:18px;height:18px;border-top:2px solid #8a857c;border-left:2px solid #8a857c;transform:rotate(45deg)}
+.spark-one{left:20%;top:24%}.spark-two{right:20%;bottom:25%;transform:rotate(225deg) scale(.7)}
+.icon-visual{position:relative;display:grid;place-items:center;background:linear-gradient(135deg,#f3eee4,#ded5c6);isolation:isolate}
+.icon-visual:before{content:'';position:absolute;inset:18px;border:1px solid #12151924;background-image:linear-gradient(#1215190b 1px,transparent 1px),linear-gradient(90deg,#1215190b 1px,transparent 1px);background-size:22px 22px;z-index:-1}
+.icon-visual>small{position:absolute;right:26px;bottom:22px;font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#625d55}
+.database-icon{width:116px;height:105px;position:relative;border:6px solid #121519;border-radius:50%/18%;background:#b8aea0;box-shadow:9px 10px 0 #1215191c;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.database-icon:before,.database-icon:after,.database-icon span{content:'';position:absolute;left:-6px;right:-6px;height:28px;border:6px solid #121519;border-radius:50%;background:#e7e0d4}
+.database-icon:before{top:-6px}.database-icon:after{bottom:-6px}.database-icon span{top:29px;background:#cfc5b6}.database-icon span:nth-child(n+2){display:none}
+.project-card:hover .database-icon{transform:translateY(-5px)}.project-card:hover .database-icon span{animation:databaseLayer .7s ease-in-out infinite alternate}
+.algorithm-icon{height:116px;display:flex;align-items:flex-end;gap:8px;padding:8px 13px;border-left:6px solid #121519;border-bottom:6px solid #121519;transform:skewY(-2deg)}
+.algorithm-icon i{display:block;width:13px;height:34px;background:#8a857c;border:3px solid #121519;transform-origin:bottom}.algorithm-icon i:nth-child(2){height:72px}.algorithm-icon i:nth-child(3){height:48px}.algorithm-icon i:nth-child(4){height:92px}.algorithm-icon i:nth-child(5){height:60px}
+.project-card:hover .algorithm-icon i{animation:iconSort .65s ease-in-out infinite alternate}.project-card:hover .algorithm-icon i:nth-child(2){animation-delay:-.3s}.project-card:hover .algorithm-icon i:nth-child(3){animation-delay:-.5s}.project-card:hover .algorithm-icon i:nth-child(4){animation-delay:-.15s}.project-card:hover .algorithm-icon i:nth-child(5){animation-delay:-.4s}
+.queue-icon{display:flex;align-items:center;gap:9px;filter:drop-shadow(8px 9px 0 #12151917)}.queue-icon span{width:55px;height:55px;display:grid;place-items:center;border:5px solid #121519;background:#e7e0d4;font:700 12px 'IBM Plex Mono',monospace}.queue-icon span:nth-of-type(2){border-radius:50%;background:#b8aea0}.queue-icon i{width:25px;height:4px;background:#121519;position:relative;overflow:visible}.queue-icon i:after{content:'';position:absolute;right:-1px;top:-4px;width:9px;height:9px;border-top:4px solid #121519;border-right:4px solid #121519;transform:rotate(45deg)}
+.project-card:hover .queue-icon span:nth-of-type(2){animation:queueHop .75s ease-in-out infinite alternate}.project-card:hover .queue-icon i{animation:queueLine .75s ease-in-out infinite alternate}
+@keyframes databaseLayer{to{transform:translateY(5px)}}@keyframes iconSort{to{transform:scaleY(.48)}}@keyframes queueHop{to{transform:translateY(-7px) rotate(8deg)}}@keyframes queueLine{to{background:#8a857c;transform:scaleX(.82)}}
+.screenshot-visual{position:relative}.screenshot-visual img{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .4s ease}.project-card:hover .screenshot-visual img{transform:scale(1.035);filter:saturate(1.08)}
+.visual-motion{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.database-screenshot .visual-motion:before{content:'';position:absolute;left:0;right:0;top:5%;height:2px;opacity:0;background:linear-gradient(90deg,transparent,#d7d1c7,transparent);box-shadow:0 0 12px #fff}
+.database-screenshot .visual-motion span{position:absolute;right:7%;width:7px;height:7px;border-radius:50%;opacity:.35;transform:scale(.75);background:#d7d1c7;box-shadow:0 0 0 3px #d7d1c733}
+.database-screenshot .visual-motion span:nth-child(1){top:20%}.database-screenshot .visual-motion span:nth-child(2){top:38%;animation-delay:.35s}.database-screenshot .visual-motion span:nth-child(3){top:57%;animation-delay:.7s}.database-screenshot .visual-motion span:nth-child(n+4){display:none}
+.algorithm-screenshot .visual-motion{display:flex;align-items:flex-end;justify-content:center;gap:5px;padding:0 18px 14px;background:linear-gradient(180deg,transparent 55%,#111418b8)}
+.algorithm-screenshot .visual-motion span{width:7px;height:18px;background:#d7d1c7aa;transform:scaleY(.45);opacity:.45;transform-origin:bottom}
+.algorithm-screenshot .visual-motion span:nth-child(2){height:31px;animation-delay:-.65s}.algorithm-screenshot .visual-motion span:nth-child(3){height:23px;animation-delay:-.3s}.algorithm-screenshot .visual-motion span:nth-child(4){height:42px;animation-delay:-.9s}.algorithm-screenshot .visual-motion span:nth-child(5){height:28px;animation-delay:-.45s}
+.queue-flow.compact div{position:relative;overflow:hidden}.queue-flow.compact div:after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,#ffffff13 50%,transparent 65%);transform:translateX(-120%)}.queue-flow.compact div:nth-child(2):after{animation-delay:.35s}.queue-flow.compact div:nth-child(3):after{animation-delay:.7s}.queue-flow.compact div:nth-child(4):after{animation-delay:1.05s}
+.queue-terminal span:first-child:after{content:'_';color:#d7d1c7}
+.project-card:hover .database-screenshot .visual-motion:before{animation:databaseScan 1.8s ease-in-out infinite}
+.project-card:hover .database-screenshot .visual-motion span{animation:databasePulse 1.25s ease-in-out infinite}
+.project-card:hover .algorithm-screenshot .visual-motion span{animation:sortBars .85s ease-in-out infinite alternate}
+.project-card:hover .queue-flow.compact div:after{animation:queueProcess 1.8s ease-in-out infinite}
+.project-card:hover .queue-terminal span:first-child:after{animation:terminalBlink .8s steps(1) infinite}
+@keyframes databaseScan{0%,12%{top:5%;opacity:0}25%{opacity:1}75%{opacity:1}88%,100%{top:94%;opacity:0}}
+@keyframes databasePulse{0%,100%{opacity:.35;transform:scale(.75)}50%{opacity:1;transform:scale(1)}}
+@keyframes sortBars{0%{transform:scaleY(.45);opacity:.45}100%{transform:scaleY(1);opacity:1}}
+@keyframes queueProcess{0%,24%{transform:translateX(-120%)}55%,100%{transform:translateX(120%)}}
+@keyframes terminalBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media(max-width:1120px){.project-body h3{font-size:32px}.project-visual{height:235px}}
+@media(max-width:760px){.project-card{grid-template-columns:1fr}.project-visual{height:300px}.project-body{min-height:0}.project-body h3{white-space:normal}}

@@ -11,16 +11,25 @@ import {
 const projects = [
   {
     number: '01',
+    title: 'Pokémon Team Optimizer',
+    description:
+      'Full-stack team builder that analyzes Pokémon lineups and helps create a more balanced team.',
+    tags: ['Python', 'FastAPI', 'React', 'TypeScript', 'Redis', 'PostgreSQL'],
+    href: 'https://github.com/colekenn/pokemon-team-optimizer',
+    demo: 'https://pokemon-team-optimizer-iota.vercel.app/',
+    visual: 'pokemon',
+  },
+  {
+    number: '02',
     title: 'Database Engine',
     description:
       'Disk-backed key-value storage engine with B+ tree indexing, linked leaf range scans, overflow pages, and runtime cache metrics.',
     tags: ['C++', 'STL', 'React', 'TypeScript'],
     href: 'https://github.com/colekenn/database-engine',
     visual: 'database',
-    image: '/database-project.png',
   },
   {
-    number: '02',
+    number: '03',
     title: 'Async Job Queue',
     description:
       'Dockerized background job service with a FastAPI entrypoint, Redis queue, PostgreSQL persistence, retries, and rate-limited APIs.',
@@ -29,7 +38,7 @@ const projects = [
     visual: 'queue',
   },
   {
-    number: '03',
+    number: '04',
     title: 'Algorithm Visualizer',
     description:
       'Interactive sorting algorithm visualizer with animated D3 bar transitions and adjustable playback controls.',
@@ -37,7 +46,6 @@ const projects = [
     href: 'https://github.com/colekenn/algorithm-visualizer',
     demo: 'https://algorithm-visualizer-nu-seven.vercel.app/',
     visual: 'algorithm',
-    image: '/algorithm-project.png',
   },
 ];
 
@@ -297,7 +305,7 @@ export default function App() {
                   </a>
                 </div>
 
-                <ProjectVisual type={project.visual} image={project.image} />
+                <ProjectVisual type={project.visual} />
 
                 <div className="project-body">
                   <h3>{project.title}</h3>
@@ -395,48 +403,11 @@ export default function App() {
   );
 }
 
-function ProjectVisual({ type, image }: { type: string; image?: string }) {
-  if (image) {
-    return (
-      <div className={`project-visual screenshot-visual ${type}-screenshot`}>
-        <img src={image} alt={`${type} project screenshot`} />
-      </div>
-    );
-  }
-
-  return (
-    <div className="project-visual queue-visual" aria-label="Async job queue architecture preview">
-      <div className="queue-window">
-        <div className="queue-bar">
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="queue-flow compact">
-          <div>
-            <strong>FastAPI</strong>
-            <small>POST /jobs</small>
-          </div>
-          <div>
-            <strong>Redis</strong>
-            <small>job_queue</small>
-          </div>
-          <div>
-            <strong>Worker</strong>
-            <small>retry + backoff</small>
-          </div>
-          <div>
-            <strong>Postgres</strong>
-            <small>job state</small>
-          </div>
-        </div>
-        <div className="queue-terminal">
-          <span>[worker] processing job 42</span>
-          <span>{'{'} status: 'succeeded', attempts: 1 {'}'}</span>
-        </div>
-      </div>
-    </div>
-  );
+function ProjectVisual({ type }: { type: string }) {
+  if (type === 'pokemon') return <div className="project-visual pokemon-visual" aria-label="Poké Ball project icon"><div className="pokeball" aria-hidden="true"><div className="pokeball-center" /></div><div className="pokemon-spark spark-one" /><div className="pokemon-spark spark-two" /><span>TEAM OPTIMIZER</span></div>;
+  if (type === 'database') return <div className="project-visual icon-visual database-icon-visual" aria-label="Database project icon"><div className="database-icon" aria-hidden="true"><span /><span /><span /></div><small>STORAGE ENGINE</small></div>;
+  if (type === 'algorithm') return <div className="project-visual icon-visual algorithm-icon-visual" aria-label="Sorting algorithm project icon"><div className="algorithm-icon" aria-hidden="true"><i /><i /><i /><i /><i /></div><small>SORT + VISUALIZE</small></div>;
+  return <div className="project-visual icon-visual queue-icon-visual" aria-label="Async queue project icon"><div className="queue-icon" aria-hidden="true"><span>API</span><i /><span>Q</span><i /><span>DB</span></div><small>ASYNC PIPELINE</small></div>;
 }
 
 function Label({ n, text }: { n: string; text: string }) {
