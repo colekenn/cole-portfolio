@@ -48,7 +48,7 @@ const experience = [
     period: 'Jun. 2026 — Present',
     logo: '/evolv-logo.png',
     summary:
-      'Building an integrated React and TypeScript alignment workflow for live X-ray detector hardware, connected to embedded C++ services through gRPC.',
+      'Owned the Collimator Alignment feature end-to-end for the eXpedite tablet, building a real-time React, TypeScript, and Electron interface with a gRPC/Protobuf pipeline streaming detector data, custom SVG calibration visualizations, and embedded C++/GPIO integrations.',
   },
   {
     role: 'Software Engineer Intern',
@@ -56,7 +56,7 @@ const experience = [
     period: 'Oct. 2025 — May 2026',
     logo: '/knead-logo.jpeg',
     summary:
-      'Built trading-strategy generation, simulation, authentication, and asynchronous backtesting systems across Python and AWS-backed services.',
+      'Built a Python code generation pipeline for trading strategies, an async backtesting framework cutting evaluation time ~40%, AWS Cognito/Supabase authentication, and a stateless multi-tenant backend with persistent, recoverable executor state.',
   },
   {
     role: 'Computer Science SI Instructor',
