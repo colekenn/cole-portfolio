@@ -25,6 +25,7 @@ const projects = [
       'Disk-backed key-value storage engine with B+ tree indexing, linked leaf range scans, overflow pages, and runtime cache metrics.',
     tags: ['C++', 'STL', 'React', 'TypeScript'],
     href: 'https://github.com/colekenn/database-engine',
+    demo: 'https://database-engine.vercel.app/',
     visual: 'database',
   },
   {
